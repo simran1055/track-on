@@ -19,9 +19,10 @@ import { Router } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { SignInComponent } from './components/auth/sign-in/sign-in.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 
 @NgModule({
-  declarations: [AppComponent, SignInComponent, SignUpComponent],
+  declarations: [AppComponent, SignInComponent, SignUpComponent, ResetPasswordComponent],
   imports: [
     ToastrModule.forRoot(),
     BrowserModule,

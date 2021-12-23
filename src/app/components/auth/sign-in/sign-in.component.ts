@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProjectService } from '@trungk18/project/state/project/project.service';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../../services/api/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sign-in',
@@ -19,12 +20,19 @@ export class SignInComponent implements OnInit {
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this._projectService.setLoading(false);
   }
 
   ngOnInit(): void {
+    this.route.queryParams
+      .subscribe(params => {
+        if (params.vf && params.id) {
+          this.verify(params.vf, params.id)
+        }
+      });
     this.singInForm = this.formBuilder.group({
       // name: ['', Validators.required],
       password: ['', Validators.required],
@@ -35,6 +43,14 @@ export class SignInComponent implements OnInit {
   get email() { return this.singInForm.get('email') }
   get password() { return this.singInForm.get('password') }
   // get name() { return this.singInForm.get('name') }
+
+  verify(vf, id) {
+    this.apiService.postApiFn('/verify-email', { vf, id }).subscribe((res: any) => {
+      if (res.message) {
+        this.toastr.success(res.message);
+      }
+    }, error => this.toastr.error(error))
+  }
 
   loginFn() {
     if (this.singInForm.invalid) {

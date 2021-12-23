@@ -22,9 +22,9 @@
                       cdkTextareaAutosize
                       (click)="setCommentEdit(true)">
             </textarea>
-            <div *ngIf="!isEditing"
+            <!-- <div *ngIf="!isEditing"
                  class="text-xs"><strong>Pro tip: </strong>press <span class="px-1 font-semibold bg-backgroundMedium">M</span> to comment
-            </div>
+            </div> -->
             <div *ngIf="isEditing"
                  class="flex pt-2 pb-4 items-center">
                 <j-button [className]="'btn btn-primary mr-2'"

@@ -37,8 +37,6 @@ export class SignUpComponent implements OnInit {
   get name() { return this.singUpForm.get('name') }
 
   loginFn() {
-    console.log(this.singUpForm);
-
     if (this.singUpForm.invalid) {
       this.submit = true;
       this.toastr.error("Fill the required fields!!")
@@ -50,7 +48,8 @@ export class SignUpComponent implements OnInit {
         name: this.singUpForm.value.name
       }
       this.apiService.postApiFn(`/sign-up`, payload).subscribe((res: any) => {
-        if (res.user) {
+        if (res.message) {
+          this.toastr.success(res.message)
           this.router.navigate(['sign-in'])
         }
       }, error => this.toastr.error(error))
