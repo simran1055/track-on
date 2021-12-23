@@ -1,0 +1,13 @@
+<div class="flex flex-col w-full h-full py-8 pl-8 pr-6">
+    <breadcrumbs [items]="breadcrumbs"></breadcrumbs>
+    <header class="flex justify-between mt-3 text-textDarkest">
+        <div class="text-2xl font-medium">Kanban board</div>
+        <div class="social-links">
+            <j-button (click)="logOut()" className="btn-secondary">Log Out
+            </j-button>
+        </div>
+    </header>
+
+    <board-filter></board-filter>
+    <board-dnd></board-dnd>
+</div>
