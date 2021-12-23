@@ -23,11 +23,11 @@ const routes: Routes = [
         path: `issue/:${ProjectConst.IssueId}`,
         component: FullIssueDetailComponent
       },
-      // {
-      //   path: '',
-      //   redirectTo: 'board',
-      //   pathMatch: 'full'
-      // }
+      {
+        path: '',
+        redirectTo: 'board/123',
+        pathMatch: 'full'
+      }
     ]
   }
 ];
